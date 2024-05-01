@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payment-project
+spec:
+  containers:
+    - name: nodejs-container
+      image: payment-project/auth
+      ports:
+        - containerPort: 3002  
