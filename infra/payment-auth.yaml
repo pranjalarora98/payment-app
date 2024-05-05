@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-mongo-payment
+  name: payment-auth-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-mongo
+      app: auth
   template:
     metadata:
       labels:
-        app: auth-mongo
+        app: auth
     spec:
       containers:
-        - name: auth-mongo
-          image: mongo
+        - name: payment-auth
+          image: payment-project/auth
           imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-mongo-payment-srv
+  name: payment-auth-srv
 spec:
   selector:
-    app: auth-mongo
+    app: auth
   ports:
-    - name: db
+    - name: auth
       protocol: TCP
-      port: 27017
-      targetPort: 27017
+      port: 3002
+      targetPort: 3002

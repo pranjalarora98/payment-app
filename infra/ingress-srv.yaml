@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: payment-ingress-service
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: payment-project.com
+      http:
+        paths:
+          - path: /user/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: payment-auth-srv
+                port:
+                  number: 3002
