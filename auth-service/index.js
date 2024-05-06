@@ -21,7 +21,7 @@ app.use(login);
   }
 }
 
-func();
+// func();
 
  app.listen(3002,()=>{
      console.log('Server Running');

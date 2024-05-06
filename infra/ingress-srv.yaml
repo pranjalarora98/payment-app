@@ -8,8 +8,8 @@ spec:
     - host: payment-project.com
       http:
         paths:
-          - path: /user/?(.*)
-            pathType: ImplementationSpecific
+          - path: /user
+            pathType: Prefix
             backend:
               service:
                 name: payment-auth-srv
