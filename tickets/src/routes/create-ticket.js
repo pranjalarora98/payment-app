@@ -12,8 +12,13 @@ router.post('/ticket/create',async(req,res)=>{
     }
     const {name,description} = req.body;
     const ticket = new Ticket({name,description});
-    ticket.save();
-    return res.status(200).json({msg:'Created Successfully'});
+    try{
+        await ticket.save();
+        return res.status(200).json({msg:'Created Successfully'});
+    }
+    catch(err){
+        return res.status(500).json({msg:err});
+    }
 })
 
 module.exports = router;
