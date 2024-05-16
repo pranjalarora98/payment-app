@@ -14,6 +14,18 @@ app.listen(3003,()=>{
 
 const kafkaProducer = new kafka.Producer(new kafka.KafkaClient({kafkaHost:'localhost:9092'}));
 
+const sendMessage = (message) => {
+
+  const payload=[
+    {topic:'test',message:JSON.stringify(message)}
+  ]
+  
+  kafkaProducer.send(paylods,(err,data)=>{
+    
+  })
+
+}
+
 kafkaProducer.on('ready',()=>{
     console.log('kafka producer ready');
 })

@@ -15,12 +15,12 @@ router.post('/user/signup',[body('email').isEmail().withMessage('Email must be v
         return res.status(400).json({errors:errors.array()});
     }
     console.log(req.body);
-    const {email,password} = req.body;
+    const {email,password,type} = req.body;
     const user =await User.findOne({email});
     if(user)
     return res.status(500).json({error:'User already exists'});
     const hashedPswd =await hashPassword(password);
-    const newUser = new User({email,password:hashedPswd});
+    const newUser = new User({email,password:hashedPswd,type});
     await newUser.save();
     res.status(200).json({msg:'Created successfully'});
 

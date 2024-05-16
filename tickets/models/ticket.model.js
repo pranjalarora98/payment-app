@@ -10,6 +10,7 @@ const ticketSchema = new mongoose.Schema({
     priority:{type:String},
     comments:{type:Array},
     createdAt:{type:Date},
+    agent:{type:String}
 })
 
 const Ticket = mongoose.model('Ticket',ticketSchema);
