@@ -1,4 +1,5 @@
 // import signup from './routes/signup';
+require('dotenv').config();
 const signup = require('./routes/signup');
 const login = require('./routes/login');
 const mongoose = require('mongoose');
@@ -21,7 +22,7 @@ app.use(login);
   }
 }
 
-// func();
+func();
 
  app.listen(3002,()=>{
      console.log('Server Running');

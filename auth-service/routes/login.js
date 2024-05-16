@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
 const {comparePassword} = require('../../common/src/password');
 
 router.post('/user/login',async (req,res)=>{
@@ -15,8 +16,9 @@ router.post('/user/login',async (req,res)=>{
     if(!res1){
         return res.status(400).json({msg:'passwords dont match'});
     } 
+    const token = jwt.sign({userId:123},process.env.AUTH_SECRET,{expiresIn: '1h'});
 
-   return res.status(200).json({msg:'Login successsfully'});
+   return res.status(200).json({msg:'Login successsfully',token});
 })
 
 module.exports = router;
