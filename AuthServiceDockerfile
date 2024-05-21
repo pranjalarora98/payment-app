@@ -1,0 +1,18 @@
+FROM node:alpine
+
+WORKDIR /app/auth-service
+COPY ./auth-service/package.json .
+RUN npm install
+COPY ./auth-service .
+
+WORKDIR /app/common
+COPY ./common/package.json .
+RUN npm install
+COPY ./common .
+
+WORKDIR /app/auth-service
+
+# EXPOSE 3002
+CMD ["npm","start"]
+
+

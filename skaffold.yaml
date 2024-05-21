@@ -9,9 +9,9 @@ build:
     push: false
   artifacts:
     - image: payment-project/auth
-      context: auth-service
+      context: ./
       docker:
-        dockerfile: Dockerfile
+        dockerfile: AuthServiceDockerfile
       sync:
         manual:
           - src: '**/*.js'
