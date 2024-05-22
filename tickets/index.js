@@ -4,7 +4,7 @@ const kafka = require('kafka-node');
 const express = require('express');
 const bodyParser=require('body-parser');
 const app = express();
-app.use(bodyParser);
+app.use(bodyParser.json());
 app.use(CreateTicket);
 
 app.listen(3003,()=>{
@@ -12,24 +12,24 @@ app.listen(3003,()=>{
 })
 
 
-const kafkaProducer = new kafka.Producer(new kafka.KafkaClient({kafkaHost:'localhost:9092'}));
+// const kafkaProducer = new kafka.Producer(new kafka.KafkaClient({kafkaHost:'localhost:9092'}));
 
-const sendMessage = (message) => {
+// const sendMessage = (message) => {
 
-  const payload=[
-    {topic:'test',message:JSON.stringify(message)}
-  ]
+//   const payload=[
+//     {topic:'test',message:JSON.stringify(message)}
+//   ]
   
-  kafkaProducer.send(paylods,(err,data)=>{
+//   kafkaProducer.send(paylods,(err,data)=>{
     
-  })
+//   })
 
-}
+// }
 
-kafkaProducer.on('ready',()=>{
-    console.log('kafka producer ready');
-})
+// kafkaProducer.on('ready',()=>{
+//     console.log('kafka producer ready');
+// })
 
-kafkaProducer.on('error',(err)=>{
-    console.log('error',err);
-})
+// kafkaProducer.on('error',(err)=>{
+//     console.log('error',err);
+// })

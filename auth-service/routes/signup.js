@@ -17,14 +17,14 @@ router.post('/user/signup',[body('email').isEmail().withMessage('Email must be v
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()});
     }
-    // console.log(req.body);
-    // const {email,password,type} = req.body;
-    // const user =await User.findOne({email});
-    // if(user)
-    // return res.status(500).json({error:'User already exists'});
-    // const hashedPswd =await hashPassword(password);
-    // const newUser = new User({email,password:hashedPswd,type});
-    // await newUser.save();
+    console.log(req.body);
+    const {email,password,type} = req.body;
+    const user =await User.findOne({email});
+    if(user)
+    return res.status(500).json({error:'User already exists'});
+    const hashedPswd =await hashPassword(password);
+    const newUser = new User({email,password:hashedPswd,type});
+    await newUser.save();
     const token = jwt.sign({userId:123},process.env.AUTH_SECRET,{expiresIn: '1h'});
     res.status(200).json({msg:'Created successfully',token});
 

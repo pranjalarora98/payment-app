@@ -14,5 +14,13 @@ build:
         dockerfile: AuthServiceDockerfile
       sync:
         manual:
-          - src: '**/*.js'
+          - src: '*.js'
             dest: .
+    - image: payment-project/ticket
+      context: ./
+      docker:
+        dockerfile: TicketServiceDockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .        

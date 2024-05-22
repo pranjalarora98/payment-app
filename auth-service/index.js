@@ -14,7 +14,7 @@ app.use(login);
 
   async function func() {
   try{
-  await mongoose.connect('mongodb://0.0.0.0:27017');
+  await mongoose.connect('mongodb://auth-mongo-payment-srv:27017/auth');
   console.log('connected to mongo');
   }
   catch(err){

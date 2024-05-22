@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR /app/tickets
+COPY ./tickets/package.json .
+RUN npm install
+COPY ./tickets .
+
+
+WORKDIR /app/tickets
+
+
+CMD ["npm","start"]
+
+
