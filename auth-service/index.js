@@ -2,6 +2,7 @@
 require('dotenv').config();
 const signup = require('./routes/signup');
 const login = require('./routes/login');
+const exportAgents = require('./routes/exportAgents');
 const mongoose = require('mongoose');
 
 const express = require('express');
@@ -11,6 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(signup);
 app.use(login);
+app.use(exportAgents);
 
   async function func() {
   try{
